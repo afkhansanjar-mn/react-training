@@ -1,10 +1,13 @@
 import { Button, Col, Input, Layout, Table } from "antd";
 import { useState } from "react";
 import DataTable from "./DataTable";
+import FormItemLabel from "antd/es/form/FormItemLabel";
+import { useNavigate } from "react-router-dom";
 
 function Signup(){
     var name,email,password;
     var [arr,setArr] = useState([]);
+    var navigate = useNavigate();
     function updateName(event){
         name = event.target.value;
     }
@@ -29,6 +32,9 @@ function Signup(){
         setArr(arr);
         console.log(arr);
     }
+    function handleLogin(){
+        navigate('/login')
+    }
     return <div>
         
         <Layout style={{background:"grey"}}>
@@ -38,6 +44,9 @@ function Signup(){
                 <Input type="email" placeholder="email" onChange={updateEmail}></Input><br></br>
                 <Input type="password" placeholder="password" onChange={updatePaswword}></Input><br></br>
                 <Button onClick={displayDetails} style={{background:"Green"}}>SignUp</Button>
+                <Col>
+                <Button style={{background:"Green"}} onClick={handleLogin}>Login</Button>
+                </Col>
             </Col>
         </Layout>
         {/* {console.log(arr)} */}

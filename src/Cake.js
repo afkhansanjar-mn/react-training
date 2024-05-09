@@ -9,26 +9,6 @@ const Cake = (props) => {
   var params = useParams();
   var cakeid = params.cakeid;
   var [cake,setCake] = useState();
-  const cakesData = [
-    {
-      title: 'Cake 1',
-      description: 'Delicious cake with strawberries',
-      image: 'https://i.pinimg.com/736x/30/7b/55/307b5502efe748aa95fc5f62ed64e16d.jpg',
-      bestseller: 'yes'
-    },
-    {
-      title: 'Cake 2',
-      description: 'Yummy chocolate cake',
-      image: 'https://i.pinimg.com/736x/30/7b/55/307b5502efe748aa95fc5f62ed64e16d.jpg',
-      bestseller: 'yes'
-    },
-    {
-      title: 'Cake 3',
-      description: 'Tasty vanilla cake',
-      image: 'https://i.pinimg.com/736x/30/7b/55/307b5502efe748aa95fc5f62ed64e16d.jpg',
-      bestseller: 'yes'
-    },
-  ];
 
   useEffect(() => {
     axios.get("http://apibyauw.eu-4.evennode.com/api/cake/"+cakeid)
@@ -41,38 +21,23 @@ const Cake = (props) => {
         })
 }, []);
 
-  return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        {/* <label>{props.name}</label> */}
-      {/* {cakesData.map((cake, index) => (
-        <Card
-          key={index}
-          hoverable
-          style={{ width: 240, marginBottom: '20px' }}
-          cover={<img alt={cake.title} src={cake.image} />}
-        >
-            {console.log(cake.bestseller)}
-          <Meta
-            title={cake.name}
-            description={cake.price}
-           
-          />
-        </Card>
-      ))} */}
-      <Card
-          hoverable
-          style={{ width: 240, marginBottom: '20px' }}
-          cover={<img alt={cake.name} src={cake.image} />}
-        >
-          <Meta
-            title={cake.name}
-            description={cake.price}
-           
-          />
-        </Card>
+return (
+  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    {cake && ( 
+      <Card hoverable
+        style={{ width: 240, marginBottom: '20px' }}
+        cover={<img alt={cake.name} src={cake.image} />}
+      >
+        {cake.description}<br></br>
+        Price : {cake.price}<br></br>
+        Likes : {cake.likes}<br></br>
+        Ratings  : {cake.ratings}<br></br>
 
-    </div>
-  );
+      </Card>
+    )}
+  </div>
+);
+
 };
 
 export default Cake;

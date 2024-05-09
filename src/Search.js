@@ -39,6 +39,7 @@ export default function Search() {
             .then(response => {
                 const allCakes = response.data.data;
                 console.log(allCakes);
+                
                 if (searchName) {
                     const filteredCakes = allCakes.filter(cake => cake.name.toLowerCase().includes(searchName.toLowerCase()));
                     setCakes(filteredCakes);

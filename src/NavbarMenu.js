@@ -15,7 +15,7 @@ function NavbarMenu() {
   }
 
   function dosearch(){
-    navigate("/search?name="+search);
+    navigate("/search?name=",search?search:'');
   }
   return (
     <Menu mode="horizontal">

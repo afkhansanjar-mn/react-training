@@ -12,6 +12,9 @@ function Login() {
     var [email,setEmail] = useState();
     var [password,setPassword] = useState();
 
+    function handleSignup(){
+      navigate("/signup")
+    }
 
     function signin(event){
       setEmail(email);
@@ -48,7 +51,10 @@ function Login() {
                 <Input type="email" placeholder="email" onChange={handleEmail}></Input><br></br>
                 <Input type="password" placeholder="password" onChange={handlePassword}></Input><br></br>
                 <Button  style={{background:"Green"}} onClick={signin}>Login</Button>
-                <Col><Button  style={{background:"Green"}}>ForgotPassword</Button></Col>
+                <Col>
+                <Button  style={{background:"Green"}}>ForgotPassword</Button>
+                <Button  style={{background:"Green"}} onClick={handleSignup}>Signup</Button>
+                </Col>
             </Col>
         </Layout>
        </div>
